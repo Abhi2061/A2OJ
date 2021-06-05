@@ -13,23 +13,31 @@ int main()
     freopen("output.txt", "w", stdout);
     #endif
 
-    string S, ans, temp;
-
+    string S, ans, word = "";
     cin>>S;
 
-    for(int i=0; i<S.length(); i++)
+    int n = S.length();
+
+    for(int i=0; i<n; i++)
     {
-        if(i < S.length()-2 && S[i] == 'W' && S[i+1] == 'U' && S[i+2] == 'B')
+        if(S[i] == 'W' and i < n-2 and S[i+1] == 'U' and S[i+2] == 'B')
         {
-            if(!temp.empty())
+            if(!word.empty())
             {
-                ans.append(temp);
-                temp.clear();
-                temp = ' ';
+                word.push_back(' ');
+                ans.append(word);
+                word.clear();
             }
+            i +=2;
         }
         else
-        temp.push_back(S[i]);
+        word.push_back(S[i]);
     }
+
+    if(!word.empty())
+    ans.append(word);
+
+    cout<<ans;
+    
     return 0;
 }
